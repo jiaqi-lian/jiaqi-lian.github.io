@@ -1,0 +1,955 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/t_1.png">
+  <link rel="icon" href="/img/t_1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Jiaqi Lian">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="基础介绍简单跳台阶 一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个 n 级的台阶总共有多少种跳法（先后次序不同算不同的结果）。  递归 1234567891011class Solution &amp;#123;public:    int jumpFloor(int number) &amp;#123;        if(number &lt;&#x3D; 1)            return 1;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态规划相关代码">
+<meta property="og:url" content="http://example.com/2022/09/06/03.%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/index.html">
+<meta property="og:site_name" content="QBlog">
+<meta property="og:description" content="基础介绍简单跳台阶 一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个 n 级的台阶总共有多少种跳法（先后次序不同算不同的结果）。  递归 1234567891011class Solution &amp;#123;public:    int jumpFloor(int number) &amp;#123;        if(number &lt;&#x3D; 1)            return 1;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/bf0945d1e109460c864a083a4fb76207.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5bCP6JG16Iqx5bm85YS_5Zut5Zut6ZW_,size_13,color_FFFFFF,t_70,g_se,x_16">
+<meta property="article:published_time" content="2022-09-06T02:39:07.000Z">
+<meta property="article:modified_time" content="2022-09-06T02:59:45.362Z">
+<meta property="article:author" content="Jiaqi Lian">
+<meta property="article:tag" content="代码">
+<meta property="article:tag" content="动态规划">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/bf0945d1e109460c864a083a4fb76207.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5bCP6JG16Iqx5bm85YS_5Zut5Zut6ZW_,size_13,color_FFFFFF,t_70,g_se,x_16">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>动态规划相关代码 - QBlog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":50,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Qi Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                pick me~
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/3.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="动态规划相关代码"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-06 10:39" pubdate>
+          September 6, 2022 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.3k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          61 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="刷题"
+        id="heading-fdacafc46605602f778fa704d63aa71b" role="tab" data-toggle="collapse" href="#collapse-fdacafc46605602f778fa704d63aa71b"
+        aria-expanded="true"
+      >
+        刷题
+        <span class="list-group-count">(14)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-fdacafc46605602f778fa704d63aa71b"
+           role="tabpanel" aria-labelledby="heading-fdacafc46605602f778fa704d63aa71b">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/09/06/03.vs%E5%9F%BA%E7%A1%80%E6%A8%A1%E6%9D%BFc++/" title="vs基础模板、c++模板"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vs基础模板、c++模板</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/06/03-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%90%E5%9B%BE%E3%80%91%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81/" title="【图】相关代码"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【图】相关代码</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/06/03-%E3%80%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E3%80%91%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81/" title="【字符串】相关代码"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【字符串】相关代码</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/06/03.%E5%9F%BA%E4%BA%8E%E3%80%90%E6%8E%92%E5%BA%8F%E3%80%91%E8%BF%9B%E4%B8%80%E6%AD%A5%E4%BB%A3%E7%A0%81/" title="【排序】相关代码"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【排序】相关代码</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/06/03.%E3%80%90%E6%95%B0%E7%BB%84%E3%80%81%E7%9F%A9%E9%98%B5%E3%80%91%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81/" title="【数组、矩阵】相关代码"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数组、矩阵】相关代码</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/06/03.%E3%80%90%E6%A0%88%E3%80%81%E9%98%9F%E5%88%97%E3%80%91%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81/" title="【栈、队列】相关代码"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【栈、队列】相关代码</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/06/03.%E3%80%90%E6%A0%91%E3%80%91%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81/" title="【树】相关基础代码"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【树】相关基础代码</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/06/03-%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E5%BE%97%E5%88%86%E6%9C%80%E5%A4%A7/" title="【编程题】得分最大"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【编程题】得分最大</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/06/03-%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E7%BB%99%E5%87%BA%E4%B8%A4%E4%B8%AA%E6%95%B4%E6%95%B0n%E5%92%8Ck%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%BB%8E1%E5%88%B0n%E4%B8%AD%E5%8F%96k%E4%B8%AA%E6%95%B0%E5%AD%97%E7%9A%84%E6%89%80%E6%9C%89%E5%8F%AF%E8%83%BD%E7%9A%84%E7%BB%84%E5%90%88/" title="【编程题】给出两个整数n和k，返回从1到n中取k个数字的所有可能的组合"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【编程题】给出两个整数n和k，返回从1到n中取k个数字的所有可能的组合</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/06/03.%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="动态规划相关代码"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">动态规划相关代码</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/06/03.%E5%9F%BA%E7%A1%80%E7%AE%80%E5%8D%95%E7%AE%97%E6%B3%95/" title="基础简单算法"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">基础简单算法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/06/03-%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%8D%95%E8%AF%8D%E9%95%BF%E5%BA%A6/" title="字符串最后一个单词长度"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">字符串最后一个单词长度</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/06/03.%E6%8E%92%E5%BA%8F%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81/" title="排序相关代码"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">排序相关代码</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/06/03.%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81/" title="链表相关代码"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">链表相关代码</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">动态规划相关代码</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="基础介绍"><a href="#基础介绍" class="headerlink" title="基础介绍"></a>基础介绍</h2><h2 id="简单"><a href="#简单" class="headerlink" title="简单"></a>简单</h2><h3 id="跳台阶"><a href="#跳台阶" class="headerlink" title="跳台阶"></a>跳台阶</h3><blockquote>
+<p>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个 n 级的台阶总共有多少种跳法（先后次序不同算不同的结果）。</p>
+</blockquote>
+<p><strong>递归</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">jumpFloor</span><span class="hljs-params">(<span class="hljs-type">int</span> number)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span>(number &lt;= <span class="hljs-number">1</span>)<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">jumpFloor</span>(number<span class="hljs-number">-1</span>)+<span class="hljs-built_in">jumpFloor</span>(number<span class="hljs-number">-2</span>);<br>        <span class="hljs-comment">//看做是从第n个台阶下台阶，f(n)</span><br>        <span class="hljs-comment">//有两种可能, 一个走一步，一个走两步，f(n) = f(n-1)+f(n-2);</span><br>        <span class="hljs-comment">//初始条件 f(0)=0, f(1)=1;</span><br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p><strong>动态规划</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">jumpFloor</span><span class="hljs-params">(<span class="hljs-type">int</span>  number)</span></span>&#123;<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">dp</span><span class="hljs-params">(number+<span class="hljs-number">1</span>,<span class="hljs-number">0</span>)</span></span>;<br>    dp[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>, dp[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">2</span>; i &lt;=number; i++)<br>    &#123;<br>        dp[i] = dp[i<span class="hljs-number">-1</span>] + dp[i<span class="hljs-number">-2</span>];<br>    &#125;<br>    <span class="hljs-keyword">return</span> dp[number];<br>    <span class="hljs-comment">//根据f[n] = f[n-1]+f[n-2];</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="连续子数组最大和"><a href="#连续子数组最大和" class="headerlink" title="连续子数组最大和"></a>连续子数组最大和</h3><p>给定一个长度为 n 的数组，数组中的数为整数。<br>请你选择一个非空连续子数组，使该子数组所有数之和尽可能大，子数组最小长度为1。求这个最大值。</p>
+<pre><code class="hljs">    输入：8
+        1 -2 3 10 -4 7 2 -5
+    输出：18
+    说明：
+    经分析可知，输入数组的子数组[3,10,-4,7,2]可以求得最大和为18       
+</code></pre>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <br>    <span class="hljs-comment">//输入</span><br>    <span class="hljs-type">int</span> n;<br>    cin&gt;&gt;n;<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">val</span><span class="hljs-params">(n+<span class="hljs-number">1</span>, <span class="hljs-number">0</span>)</span></span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)<br>    &#123;<br>        <span class="hljs-type">int</span> t = <span class="hljs-number">0</span>;<br>        cin&gt;&gt;t;<br>        val[i] = t;<br>    &#125;<br>    <br>    <span class="hljs-comment">//第i个数结尾的子数组最大连续和</span><br>    <span class="hljs-comment">//dp[i] = max(dp[i-1]+val[i], val[i])</span><br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">dp</span><span class="hljs-params">(n+<span class="hljs-number">1</span>, <span class="hljs-number">0</span>)</span></span>;<br>    dp[<span class="hljs-number">0</span>] = val[<span class="hljs-number">0</span>];<br>    <span class="hljs-type">int</span> res = dp[<span class="hljs-number">0</span>];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;n; i++)&#123;<br>        dp[i] = <span class="hljs-built_in">max</span>(dp[i<span class="hljs-number">-1</span>] + val[i], val[i]);<br>        res = <span class="hljs-built_in">max</span>(res, dp[i]);<br>    &#125;<br>    <br>    cout&lt;&lt;res&lt;&lt;endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;       <br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="NOIP2001-装箱问题"><a href="#NOIP2001-装箱问题" class="headerlink" title="[NOIP2001]装箱问题"></a>[NOIP2001]装箱问题</h3><p>问题描述</p>
+<pre><code class="hljs">有一个箱子容量为V（正整数，0 ≤ V ≤ 20000），同时有n个物品（0＜n ≤ 30），每个物品有一个体积（正整数）。
+
+要求n个物品中，任取若干个装入箱内，使箱子的剩余空间为最小。
+</code></pre>
+<p>输入描述：</p>
+<pre><code class="hljs">1个整数，表示箱子容量
+1个整数，表示有n个物品
+接下来n行，分别表示这n个物品的各自体积
+</code></pre>
+<p>输出描述：</p>
+<pre><code class="hljs">1个整数，表示箱子剩余空间
+</code></pre>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-comment">//求背包的剩余空间最小=若干个物品的体积之和最大</span><br><span class="hljs-comment">//dp[i]:表示的是体积不超过i的放置方案的体积</span><br><span class="hljs-comment">//最小的剩余空间 = V-dp[v]</span><br><span class="hljs-comment">//</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-comment">//输入</span><br>    <span class="hljs-type">int</span> v, n;<span class="hljs-comment">//v--体积，n--个数</span><br>    cin&gt;&gt;v&gt;&gt;n;<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">ths</span><span class="hljs-params">(n+<span class="hljs-number">1</span>,<span class="hljs-number">0</span>)</span></span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)<br>        cin&gt;&gt;ths[i];<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">dp</span><span class="hljs-params">(<span class="hljs-number">20001</span>)</span></span>;<br><br>    <br>    <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=v; j&gt;=ths[i]; j--) <span class="hljs-comment">//因为容量必须大于当前所放物品</span><br>            dp[j] = <span class="hljs-built_in">max</span>(dp[j], dp[j-ths[i]]+ths[i]);<span class="hljs-comment">//选还是不选，在有容量的同时保证放入最多</span><br>            <span class="hljs-comment">//dp[j] = min(dp[j], dp[j-ths[i]]);</span><br>        &#125;<br>    cout&lt;&lt;v-dp[v]&lt;&lt;endl; <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h3><p>描述</p>
+<pre><code class="hljs">你有一个背包，最多能容纳的体积是V。
+现在有n种物品，每种物品有任意多个，第i种物品的体积为v_i ,价值为w_i。
+（1）求这个背包至多能装多大价值的物品？
+（2）若背包恰好装满，求至多能装多大价值的物品？
+</code></pre>
+<p><strong>每种物品有任意多个</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">1010</span>;<br><br><span class="hljs-type">int</span> v[N], w[N];<br><span class="hljs-type">int</span> f[N];<span class="hljs-comment">//f[j]表示在体积j下的总价值</span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-type">int</span> n, m;<br>    cin&gt;&gt;n&gt;&gt;m;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++)<br>        cin&gt;&gt;v[i]&gt;&gt;w[i];<br>    <br>    <span class="hljs-built_in">memset</span>(f, <span class="hljs-number">-0x3f</span>, <span class="hljs-built_in">sizeof</span>(f));<br>    <br>    <span class="hljs-comment">//在可以加入多个相同物品时，使用正向</span><br>    f[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>; j&lt;=m-v[i]; j++)&#123;<br>            <span class="hljs-keyword">if</span>(f[j] &gt;= <span class="hljs-number">0</span>)<br>                f[j+v[i]] = <span class="hljs-built_in">max</span>(f[j+v[i]], f[j]+w[i]);<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-type">int</span> res1 = <span class="hljs-number">0</span>, res2 = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;=m; i++)<br>        res1 = <span class="hljs-built_in">max</span>(res1, f[i]);<br>    cout&lt;&lt;res1&lt;&lt;endl;<br>    <br>    <span class="hljs-keyword">if</span>(f[m] &lt; <span class="hljs-number">0</span>)<br>        res2 = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">else</span><br>        res2 = f[m];<br>    cout&lt;&lt;res2&lt;&lt;endl;<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="买卖股票的最好时机-一"><a href="#买卖股票的最好时机-一" class="headerlink" title="买卖股票的最好时机(一)"></a>买卖股票的最好时机(一)</h3><p><strong>描述</strong></p>
+<pre><code class="hljs">假设你有一个数组prices，长度为n，其中prices[i]是股票在第i天的价格，请根据这个价格数组，返回买卖股票能获得的最大收益
+1.你可以买入一次股票和卖出一次股票，并非每天都可以买入或卖出一次，总共只能买入和卖出一次，且买入必须在卖出的前面的某一天
+2.如果不能获取到任何利润，请返回0
+3.假设买入卖出均无手续费
+</code></pre>
+<p><strong>解题：</strong></p>
+<pre><code class="hljs">买卖股票有约束，根据题目意思，有以下两个约束条件：
+   条件 1：你不能在买入股票前卖出股票；
+条件 2：最多只允许完成一笔交易。
+
+因此 当天是否持股 是一个很重要的因素，而当前是否持股和昨天是否持股有关系，为此我们需要把 是否持股 设计到状态数组中
+</code></pre>
+<p>状态定义：<br>dp[i][j]：下标为 i 这一天结束的时候，手上持股状态为 j 时，我们持有的现金数。<br>    j &#x3D; 0，表示当前不持股；<br>    j &#x3D; 1，表示当前持股。<br>注意：这个状态具有前缀性质，下标为 i 的这一天的计算结果包含了区间 [0, i] 所有的信息，因此最后输出 dp[len - 1][0]</p>
+<p>不持股时：</p>
+<ul>
+<li>昨天不持股，今天什么都不干</li>
+<li>昨天持股，今天卖出股票</li>
+<li>持股时：</li>
+<li>昨天持股，今天什么都不干</li>
+<li>昨天不持股，今天买入</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * </span><br><span class="hljs-comment">     * @param prices int整型vector </span><br><span class="hljs-comment">     * @return int整型</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxProfit</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; prices)</span> </span>&#123;<br>        <span class="hljs-comment">// write code here</span><br>        <span class="hljs-comment">//低了买，高了卖</span><br>        <span class="hljs-comment">//找相差最大的一对</span><br>        <span class="hljs-comment">//贪婪算法，运行时间超出</span><br>        <span class="hljs-comment">//int res=0;</span><br>     <span class="hljs-comment">//for(int i=1; i&lt;prices.size(); i++)&#123;</span><br>     <span class="hljs-comment">//    for(int j=0; j&lt;i; j++)&#123;</span><br>     <span class="hljs-comment">//        if(prices[j] &lt; prices[i])&#123;</span><br>     <span class="hljs-comment">//            res = max(res, prices[i]-prices[j]);</span><br>     <span class="hljs-comment">//        &#125;</span><br>     <span class="hljs-comment">//    &#125;</span><br>     <span class="hljs-comment">//&#125;</span><br>     <span class="hljs-comment">//return res;</span><br>        <br>        <span class="hljs-comment">//动态规划</span><br>        <span class="hljs-type">int</span> len = prices.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">if</span>(len &lt; <span class="hljs-number">2</span>)<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">dp</span>(len+<span class="hljs-number">1</span>, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;(<span class="hljs-number">2</span>,<span class="hljs-number">0</span>));<br>        <br>        dp[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;<span class="hljs-comment">//初始化：不持股为0，持股就需要减去第一天（下标为0）的股价</span><br>        dp[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>] = -prices[<span class="hljs-number">0</span>];<span class="hljs-comment">//持股，手上的现金数</span><br>        <br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;len; i++)&#123;<br>            dp[i][<span class="hljs-number">0</span>] = <span class="hljs-built_in">max</span>(dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">0</span>], dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">1</span>] + prices[i]);<br>            dp[i][<span class="hljs-number">1</span>] = <span class="hljs-built_in">max</span>(dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">1</span>], -prices[i]);<br>        &#125;<br>        <span class="hljs-keyword">return</span> dp[len<span class="hljs-number">-1</span>][<span class="hljs-number">0</span>];<br>        <br>        <br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="中等"><a href="#中等" class="headerlink" title="中等"></a>中等</h2><h3 id="三角形最小路径和"><a href="#三角形最小路径和" class="headerlink" title="三角形最小路径和"></a>三角形最小路径和</h3><pre><code class="hljs">给定一个正三角形数组，自顶到底分别有 1，2，3，4，5...，n 个元素，找出自顶向下的最小路径和。
+
+每一步只能移动到下一行的相邻节点上，相邻节点指下行种下标与之相同或下标加一的两个节点。
+</code></pre>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//从下到上</span><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">minTrace</span><span class="hljs-params">(vector&lt;vector&lt;<span class="hljs-type">int</span>&gt; &gt;&amp; triangle)</span> </span>&#123;<br>        <span class="hljs-type">int</span> n = triangle.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">dp</span><span class="hljs-params">(n+<span class="hljs-number">1</span>, <span class="hljs-number">0</span>)</span></span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=n<span class="hljs-number">-1</span>; i&gt;=<span class="hljs-number">0</span>; i--)&#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>; j&lt;=i; j++)&#123;<br>                dp[j] = <span class="hljs-built_in">min</span>(dp[j], dp[j+<span class="hljs-number">1</span>]) + triangle[i][j];<br>            &#125;       <br>        &#125;<br>        <span class="hljs-keyword">return</span> dp[<span class="hljs-number">0</span>];  <br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//从上到下</span><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">minTrace1</span><span class="hljs-params">(vector&lt;vector&lt;<span class="hljs-type">int</span>&gt; &gt;&amp; triangle)</span> </span>&#123;<br>        <span class="hljs-comment">// write code here</span><br>        <span class="hljs-type">int</span> n = triangle.<span class="hljs-built_in">size</span>();<br>        <br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">dp</span>(n, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;(n,<span class="hljs-number">0</span>));<br>        dp[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = triangle[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>];<br>        <br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;n; i++)&#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>; j&lt;=i; j++)&#123;<br>                <span class="hljs-keyword">if</span>(j == <span class="hljs-number">0</span>)<br>                    dp[i][j] = dp[i<span class="hljs-number">-1</span>][j] + triangle[i][j];<br>                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(j == i)<br>                    dp[i][j] = dp[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>] + triangle[i][j];<br>                <span class="hljs-keyword">else</span><br>                    dp[i][j] = <span class="hljs-built_in">min</span>(dp[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>], dp[i<span class="hljs-number">-1</span>][j]) + triangle[i][j];<br>            &#125;<br>        &#125;<br>        <span class="hljs-type">int</span> res = INT_MAX;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i&lt;n ; i++)<br>            res = <span class="hljs-built_in">min</span>(res, dp[n<span class="hljs-number">-1</span>][i]);<br>        <span class="hljs-keyword">return</span> res;  <br>    &#125;<br></code></pre></td></tr></table></figure>
+<h3 id="最长上升子序列-一"><a href="#最长上升子序列-一" class="headerlink" title="最长上升子序列(一)"></a>最长上升子序列(一)</h3><pre><code class="hljs">给定一个长度为 n 的数组 arr，求它的最长严格上升子序列的长度。
+</code></pre>
+<p>所谓子序列，指一个数组删掉一些数（也可以不删）之后，形成的新数组。例如 [1,5,3,7,3] 数组，其子序列有：[1,3,3]、[7] 等。但 [1,6]、[1,3,5] 则不是它的子序列。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-comment">//输入</span><br>    <span class="hljs-type">int</span> n;<br>    cin&gt;&gt;n;<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">val</span><span class="hljs-params">(n+<span class="hljs-number">1</span>, <span class="hljs-number">0</span>)</span></span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)<br>        cin&gt;&gt;val[i];<br>    <br>    <span class="hljs-comment">//dp数组保存每个数做结尾时对应的最大长度</span><br>    <span class="hljs-comment">//条件：val[i]&lt;val[j], dp[i]大于在j之前所有的dp中最大</span><br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">dp</span><span class="hljs-params">(n+<span class="hljs-number">1</span>, <span class="hljs-number">1</span>)</span></span>;<br>    <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;n ; i++)&#123;<br>        <span class="hljs-type">int</span> mx = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>; j&lt;i; j++)&#123;<br>            <span class="hljs-keyword">if</span>(val[j] &lt; val[i])<br>                mx = <span class="hljs-built_in">max</span>(mx, dp[j]);<br>        &#125;<br>        dp[i] = mx+<span class="hljs-number">1</span>;<br>    &#125;<br>    <br>    <span class="hljs-type">int</span> res = dp[<span class="hljs-number">0</span>];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;dp.<span class="hljs-built_in">size</span>(); i++)<br>        res = <span class="hljs-built_in">max</span>(res, dp[i]);<br>    cout&lt;&lt;res&lt;&lt;endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>  <br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="最长公共子序列-一"><a href="#最长公共子序列-一" class="headerlink" title="最长公共子序列(一)"></a>最长公共子序列(一)</h3><pre><code class="hljs">给定两个字符串 s1 和 s2，长度为 n 和 m  。求两个字符串最长公共子序列的长度。
+</code></pre>
+<p>所谓子序列，指一个字符串删掉部分字符（也可以不删）形成的字符串。例如：字符串 “arcaea” 的子序列有 “ara” 、 “rcaa” 等。但 “car” 、 “aaae” 则不是它的子序列。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-type">int</span> n, m;<br>    cin&gt;&gt;n&gt;&gt;m;<br>    string s1, s2;<br>    cin&gt;&gt;s1&gt;&gt;s2;<br>    <br>    <span class="hljs-type">int</span> dp[<span class="hljs-number">1001</span>][<span class="hljs-number">1001</span>] = &#123;<span class="hljs-number">0</span>&#125;;<br>    <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>; j&lt;m; j++)&#123;<br>            <span class="hljs-keyword">if</span>(s1[i] == s2[j])<br>                dp[i+<span class="hljs-number">1</span>][j+<span class="hljs-number">1</span>] = dp[i][j] + <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">else</span><br>                dp[i+<span class="hljs-number">1</span>][j+<span class="hljs-number">1</span>] = <span class="hljs-built_in">max</span>(dp[i][j+<span class="hljs-number">1</span>], dp[i+<span class="hljs-number">1</span>][j]);<br>        &#125;<br>    &#125;<br>    cout&lt;&lt;dp[n][m]&lt;&lt;endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="最长上升子序列-三"><a href="#最长上升子序列-三" class="headerlink" title="最长上升子序列(三)"></a>最长上升子序列(三)</h3><p><strong>描述</strong></p>
+<pre><code class="hljs">给定数组 arr ，设长度为 n ，输出 arr 的最长上升子序列。（如果有多个答案，请输出其中 按数值(注：区别于按单个字符的ASCII码值)进行比较的 字典序最小的那个）
+</code></pre>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * retrun the longest increasing subsequence</span><br><span class="hljs-comment">     * @param arr int整型vector the array</span><br><span class="hljs-comment">     * @return int整型vector</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">LIS</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; arr)</span> </span>&#123;<br>        <span class="hljs-comment">// write code here</span><br>        <span class="hljs-type">int</span> n = arr.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">tail</span><span class="hljs-params">(n)</span></span>;<span class="hljs-comment">//希望末尾的数字越小越好</span><br>        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">dp</span><span class="hljs-params">(n)</span></span>;<span class="hljs-comment">//第i个元素的最大递增子序列长度</span><br>        <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)&#123;<br>            <span class="hljs-type">int</span> left=<span class="hljs-number">0</span>, right=ans;<br>            <span class="hljs-keyword">while</span>(left&lt;right)&#123;<br>                <span class="hljs-type">int</span> mid = (left+right)/<span class="hljs-number">2</span>;<br>                <span class="hljs-keyword">if</span>(tail[mid] &gt;= arr[i])<br>                    right = mid;<br>                <span class="hljs-keyword">else</span><br>                    left = mid+<span class="hljs-number">1</span>;<br>            &#125;<br>            tail[left] = arr[i];<br>            dp[i] = left+<span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">if</span>(left == ans)<br>                ans++;<br>        &#125;<br>        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">res</span><span class="hljs-params">(ans)</span></span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=n<span class="hljs-number">-1</span>, j=ans; i&gt;=<span class="hljs-number">0</span>; i--)&#123;<br>            <span class="hljs-keyword">if</span>(dp[i] == j)<br>                res[--j] = arr[i];<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>        <br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h3 id="模板-背包"><a href="#模板-背包" class="headerlink" title="[模板] 背包"></a>[模板] 背包</h3><p>描述</p>
+<pre><code class="hljs">    你有一个背包，最多能容纳的体积是V。
+    现在有n个物品，第i个物品的体积为v_i,价值为w_i
+
+（1）求这个背包至多能装多大价值的物品？
+（2）若背包恰好装满，求至多能装多大价值的物品？
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/bf0945d1e109460c864a083a4fb76207.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5bCP6JG16Iqx5bm85YS_5Zut5Zut6ZW_,size_13,color_FFFFFF,t_70,g_se,x_16" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">1010</span>;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-comment">//输入</span><br>    <span class="hljs-type">int</span> n, m;<br>    cin&gt;&gt;n&gt;&gt;m;<br>    <span class="hljs-type">int</span> v[N], w[N];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++)<br>        cin&gt;&gt;v[i]&gt;&gt;w[i];<br>    <br>    <span class="hljs-type">int</span> f[N];<span class="hljs-comment">//f[j]表示体积为j的情况下的总价值</span><br>    <span class="hljs-built_in">memset</span>(f, <span class="hljs-number">-0x3f</span>, <span class="hljs-built_in">sizeof</span>(f));<br>    <br>    f[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;<span class="hljs-comment">//最开始体积为0价值为0</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=m; j&gt;=v[i]; j--)&#123;<br>            f[j] = <span class="hljs-built_in">max</span>(f[j], f[j-v[i]]+w[i]);<br>        &#125;<br>    &#125;<br>    <span class="hljs-type">int</span> res1=<span class="hljs-number">0</span>, res2 = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;=m; i++)<br>        res1 = <span class="hljs-built_in">max</span>(res1, f[i]);<br>    cout&lt;&lt;res1&lt;&lt;endl;<br>    <br>    <span class="hljs-keyword">if</span>(f[m]&lt;<span class="hljs-number">0</span>)<br>        res2 = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">else</span><br>        res2 = f[m];<br>    cout&lt;&lt;res2&lt;&lt;endl;<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <br>&#125;<br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-chain-item">刷题</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E4%BB%A3%E7%A0%81/">#代码</a>
+      
+        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>动态规划相关代码</div>
+      <div>http://example.com/2022/09/06/03.动态规划/</div>
+    </div>
+    <div class="license-meta">
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>September 6, 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/09/06/03-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%90%E5%9B%BE%E3%80%91%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81/" title="【图】相关代码">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【图】相关代码</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/09/06/03.%E5%9F%BA%E7%A1%80%E7%AE%80%E5%8D%95%E7%AE%97%E6%B3%95/" title="基础简单算法">
+                        <span class="hidden-mobile">基础简单算法</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        Views: 
+        <span id="busuanzi_value_site_pv"></span>
+        
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        Visitors: 
+        <span id="busuanzi_value_site_uv"></span>
+        
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.1/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

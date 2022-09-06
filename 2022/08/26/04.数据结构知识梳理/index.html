@@ -1,0 +1,1092 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/t_1.png">
+  <link rel="icon" href="/img/t_1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Jiaqi Lian">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="数据结构面试、数据结构考研复试——常见问题以及回答  说明：这些是自己整理回答的答案 可以借鉴 也可能存在错误 欢迎指正 逻辑结构与物理结构的区别逻辑结构 ：是指数据对象中数据元素之间的相互关系 逻辑结构分类： 集合——各个元素之间是“平等”的，类似于数学里面的集合 线性结构——数据结构中的数据元素是一对一关系的 树性结构——数据结构中的数据元素之间存在一对多的层次关系  图形结构——数据结构中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构知识系统梳理">
+<meta property="og:url" content="http://example.com/2022/08/26/04.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/index.html">
+<meta property="og:site_name" content="QBlog">
+<meta property="og:description" content="数据结构面试、数据结构考研复试——常见问题以及回答  说明：这些是自己整理回答的答案 可以借鉴 也可能存在错误 欢迎指正 逻辑结构与物理结构的区别逻辑结构 ：是指数据对象中数据元素之间的相互关系 逻辑结构分类： 集合——各个元素之间是“平等”的，类似于数学里面的集合 线性结构——数据结构中的数据元素是一对一关系的 树性结构——数据结构中的数据元素之间存在一对多的层次关系  图形结构——数据结构中">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200506150235591.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDE3NzU5NA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020050616004737.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDE3NzU5NA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200506173421805.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDE3NzU5NA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200512134258944.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDE3NzU5NA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200507151335238.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020050715134813.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDE3NzU5NA==,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2022-08-26T08:33:59.000Z">
+<meta property="article:modified_time" content="2022-08-26T08:40:43.166Z">
+<meta property="article:author" content="Jiaqi Lian">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="面试、复试">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200506150235591.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDE3NzU5NA==,size_16,color_FFFFFF,t_70">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>数据结构知识系统梳理 - QBlog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":50,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Qi Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                pick me~
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/3.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="数据结构知识系统梳理"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-26 16:33" pubdate>
+          August 26, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          59 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="基础知识"
+        id="heading-8453e91e9011ab99dfbb3b16f56ac222" role="tab" data-toggle="collapse" href="#collapse-8453e91e9011ab99dfbb3b16f56ac222"
+        aria-expanded="true"
+      >
+        基础知识
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-8453e91e9011ab99dfbb3b16f56ac222"
+           role="tabpanel" aria-labelledby="heading-8453e91e9011ab99dfbb3b16f56ac222">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/08/26/04.%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/" title="数学知识梳理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">数学知识梳理</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/08/26/04.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/" title="数据结构知识系统梳理"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">数据结构知识系统梳理</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数据结构知识系统梳理</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <blockquote>
+<p>数据结构面试、数据结构考研复试——常见问题以及回答</p>
+</blockquote>
+<p>说明：这些是自己整理回答的答案 可以借鉴 也可能存在错误 欢迎指正</p>
+<h1 id="逻辑结构与物理结构的区别"><a href="#逻辑结构与物理结构的区别" class="headerlink" title="逻辑结构与物理结构的区别"></a>逻辑结构与物理结构的区别</h1><p><strong>逻辑结构</strong> ：是指数据对象中数据元素之间的相互关系</p>
+<p><strong>逻辑结构分类：</strong></p>
+<pre><code class="hljs">集合——各个元素之间是“平等”的，类似于数学里面的集合
+线性结构——数据结构中的数据元素是一对一关系的
+树性结构——数据结构中的数据元素之间存在一对多的层次关系
+ 图形结构——数据结构中的数据元素之间存在多对多的关系
+</code></pre>
+<hr>
+<p><strong>物理结构</strong> ：是指数据的逻辑结构在计算机中的存储形式</p>
+<p><strong>物理结构的分类：</strong></p>
+<p> <strong>1. 顺序存储结构</strong><br>     ——把数据元素存放在地址连续的存储单元中，其数据间的逻辑关系和物理关系是一致的。</p>
+<p> <strong>2. 链式存储结构</strong><br>    ——把数据元素存放在任意的存储单元中，这组存储单元可以是连续的，也可以是不连续的。通过指针来找到下一个数据元素的地址。</p>
+<p><strong>3.索引存储结构</strong>	<br>    ——B+ 树</p>
+<p><strong>4.散列存储结构</strong></p>
+<hr>
+<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><p><strong>算法的五大特征</strong> </p>
+<pre><code class="hljs">  - 有穷性——有限的步骤
+ - 确定性——不可二义性
+ - 可行性——每一步都是通过执行有限次数完成的
+ - 输入——零个或多个输入
+ - 输出——至少有一个或多个输出
+</code></pre>
+<p><strong>好的算法</strong></p>
+<pre><code class="hljs"> - 正确性
+ - 可读性
+ - 健壮性 ——当输入数据不合法时，算法也能做出相应的反应
+ - 效率与低存储需求
+</code></pre>
+<p><strong>时间复杂度</strong>： 算法的执行时间与原操的执行次数之和成正比</p>
+<p><strong>空间复杂度</strong> ： 如果输入数据所占空间只取决于问题本身，而与算法无关，只需要分析除了输入和程序之外的辅助变量所占用的空间即可。</p>
+<h1 id="常见的数据结构"><a href="#常见的数据结构" class="headerlink" title="常见的数据结构"></a>常见的数据结构</h1><p><strong>数据结构</strong> ：是指相互之间存在一种或者多种特定关系的数据元素的集合</p>
+<p><strong>常见数据结构</strong></p>
+<pre><code class="hljs">数组	——————	一维数组、二维数组
+链表	——————	单链表、循环链表
+栈		——————	先进后出、递归、后缀表达式、函数调用
+队列	——————	先进先出、树的层次遍历、图的广度遍历
+树		——————	二叉树、森林、平衡二叉树、线索二叉树、遍历
+图		——————	有向图、无向图、最小二叉树、遍历、最短路径
+</code></pre>
+<h1 id="链表存储结构和顺序存储结构的区别"><a href="#链表存储结构和顺序存储结构的区别" class="headerlink" title="链表存储结构和顺序存储结构的区别"></a>链表存储结构和顺序存储结构的区别</h1><p><strong>顺序存储结构</strong>：是以数据元素的<strong>相对物理位置</strong>来表示数据元素之间的逻辑关系的</p>
+<p><strong>链表存储结构</strong> ：以<strong>指针</strong>指向来表示数据元素之间的逻辑关系。</p>
+<table>
+<thead>
+<tr>
+<th>顺序存储结构</th>
+<th>链表存储结构</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>读取方便 O(1）</td>
+<td>读取不方便 需要遍历  O(n)</td>
+</tr>
+<tr>
+<td>插入删除 需要移动大量元素</td>
+<td>插入删除方便 只需要改变指针</td>
+</tr>
+<tr>
+<td>空间分配 ：一次性</td>
+<td>在需要时分配</td>
+</tr>
+<tr>
+<td>存储密度 &#x3D; 1</td>
+<td>存储密度 &lt; 1</td>
+</tr>
+</tbody></table>
+<h1 id="数组和链表的区别"><a href="#数组和链表的区别" class="headerlink" title="数组和链表的区别"></a>数组和链表的区别</h1><table>
+<thead>
+<tr>
+<th>数组</th>
+<th>链表</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>事先定义长度，不能适应数据动态地增减</td>
+<td>动态地进行存储分配，可以适应数据动态地增减</td>
+</tr>
+<tr>
+<td>从栈中分配空间</td>
+<td>从堆中分配空间</td>
+</tr>
+<tr>
+<td>快速访问数据元素，插入删除不方便</td>
+<td>查找访问数据不方便，插入删除数据发布</td>
+</tr>
+</tbody></table>
+<h1 id="头指针和头结点的区别"><a href="#头指针和头结点的区别" class="headerlink" title="头指针和头结点的区别"></a>头指针和头结点的区别</h1><table>
+<thead>
+<tr>
+<th>头指针</th>
+<th>头结点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>是链表指向第一个结点的指针，若链表有头结点，则是指向头结点的指针</td>
+<td>头结点是为了操作的统一和方便而设立的，放在第一元素的结点之前。</td>
+</tr>
+<tr>
+<td>是必需的</td>
+<td>不是必需的 为了方便操作</td>
+</tr>
+<tr>
+<td>具有标识作用</td>
+<td>对于插入和删除第一结点，和其他结点操作统一</td>
+</tr>
+</tbody></table>
+<h1 id="线性链表"><a href="#线性链表" class="headerlink" title="线性链表"></a>线性链表</h1><p>线性链表中一个节点代表一个存储空间，即节点。每一个节点包括两个部分，一个用来存储数据，一个存储下一个元素的地址。</p>
+<h1 id="判断整个链表是否有环，如何找到这个环"><a href="#判断整个链表是否有环，如何找到这个环" class="headerlink" title="判断整个链表是否有环，如何找到这个环"></a>判断整个链表是否有环，如何找到这个环</h1><p>提问：给定一个单链表，只给出头指针h：<br>1.如果判断是否存在环？</p>
+<p>2.如何知道环的长度？</p>
+<p>3.如何找出环的连接点在哪里？</p>
+<p>4.带环链表的长度是多少</p>
+<p>解法：<br>1.对于判断一个单链表是否存在环，<strong>可以利用追赶的方式，设立两个指针slow、fast</strong>，从头指针开始，每次分别前进一步和两步。如果存在环，则两者相遇；如果没有环，fast遇到NULL退出。</p>
+<p>2.在slow和fast相遇的地方标记，再次相遇所走过的操作数就是环的长度</p>
+<p>3.分别从相遇点和头指针开始走，相遇的那个点就是连接点</p>
+<p>4.问题3中连接点距离头指针的长度，加上问题2中求出的环的长度，即为链表的长度。</p>
+<p> <a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_725dd1010100tqwp.html">http://blog.sina.com.cn/s/blog_725dd1010100tqwp.html</a>.</p>
+<h1 id="单链表和双链表的区别"><a href="#单链表和双链表的区别" class="headerlink" title="单链表和双链表的区别"></a>单链表和双链表的区别</h1><p><strong>单链表</strong> ：只能向后访问，不能逆向访问</p>
+<p><strong>双链表</strong> ：在单链表的基础上添加一个指向前驱结点的指针域，实现双向遍历</p>
+<h1 id="简述KMP算法"><a href="#简述KMP算法" class="headerlink" title="简述KMP算法"></a>简述KMP算法</h1><p>KMP算法是在简单模式匹配的基础上对串的模式匹配进行优化。</p>
+<p>主要的思路是每趟比较过程中让子串先滑动到一个合适的位置。</p>
+<p>当发生不匹配时，不同于简单模式匹配的右移一位，而是<strong>移动到适合的位置</strong>。</p>
+<p>这里所移动的位置依靠与NEXT[]数组，求next[]数组的方法是比较前后缀相同元素。</p>
+<h1 id="栈和队列的区别"><a href="#栈和队列的区别" class="headerlink" title="栈和队列的区别"></a>栈和队列的区别</h1><table>
+<thead>
+<tr>
+<th>栈</th>
+<th>队列</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>先进后出</td>
+<td>先进先出</td>
+</tr>
+<tr>
+<td>允许在表尾进行插入和删除</td>
+<td>允许在一段进行插入一段进行删除</td>
+</tr>
+<tr>
+<td>插入和删除都在表尾进行</td>
+<td>在队尾插入在队头删除</td>
+</tr>
+<tr>
+<td>top &#x3D;&#x3D; -1 为空</td>
+<td>front &#x3D;&#x3D; rear 为空</td>
+</tr>
+<tr>
+<td>top++ 进栈</td>
+<td>rear &#x3D; （rear+1）%maxsize进队</td>
+</tr>
+<tr>
+<td>top– 出栈</td>
+<td>front &#x3D; （front+1）%maxsize出队</td>
+</tr>
+</tbody></table>
+<p><strong>相同点</strong> ：</p>
+<pre><code class="hljs">栈和队列都是线性结构
+栈和队列在插入时都是在表尾进行
+栈和队列都可以用顺序存储结构和链表存储结构
+栈和队列插入和删除操作的时间复杂度和空间复杂度是一样的
+</code></pre>
+<p><strong>不同点</strong> ：</p>
+<pre><code class="hljs">删除元素位置不同，栈在表尾，队在表头
+用链表存储时可以实现多栈空间共享，队列不行
+</code></pre>
+<h1 id="两个栈实现队列，两个队列实现栈"><a href="#两个栈实现队列，两个队列实现栈" class="headerlink" title="两个栈实现队列，两个队列实现栈"></a>两个栈实现队列，两个队列实现栈</h1><h2 id="两个栈实现队列"><a href="#两个栈实现队列" class="headerlink" title="两个栈实现队列"></a>两个栈实现队列</h2><p>栈1 - - - - - - -栈2<br>    <img src="https://img-blog.csdnimg.cn/20200506150235591.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDE3NzU5NA==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><br>入队：把全部元素入栈1，出栈1压入栈2，实现与队列相同的顺序。</p>
+<p>出队：在栈2 中以此出队即可。</p>
+<p>插入新的元素：不应该在栈2内还有元素时，将栈1中插入的元素入栈，而是等栈2所有元素都出队后，再将栈1 中的元素压入栈2。</p>
+<h1 id="树和二叉树的相关概念"><a href="#树和二叉树的相关概念" class="headerlink" title="树和二叉树的相关概念"></a>树和二叉树的相关概念</h1><h2 id="提问：二叉树和度为2的树的区别"><a href="#提问：二叉树和度为2的树的区别" class="headerlink" title="提问：二叉树和度为2的树的区别"></a>提问：二叉树和度为2的树的区别</h2><p>回答：</p>
+<p>二叉树的特点：<br>1、每个结点最多有两颗子树，结点的度最大为2。<br>2、左子树和右子树是有顺序的，次序不能颠倒。<br>3、即使某结点只有一个子树，也要区分左右子树。<br>4、二叉树可以是空树、只有一个根结点、根结点只有左子树、根结点只有右子树、根结点左右子树都有。</p>
+<p>度为2 的树：树的结点的最大的度为2.</p>
+<h2 id="二叉树遍历"><a href="#二叉树遍历" class="headerlink" title="二叉树遍历"></a>二叉树遍历</h2><p>先序：</p>
+<pre><code class="hljs">先访问根结点
+再先序遍历左子树
+最后先序遍历右子树
+</code></pre>
+<p>中序：</p>
+<pre><code class="hljs">从根结点开始，
+中序遍历左子树
+访问根结点
+最后中序遍历右子树
+</code></pre>
+<p>后序遍历</p>
+<pre><code class="hljs">从左到右先叶子结点的方式遍历访问左右子树
+最后访问根结点
+</code></pre>
+<p>层次遍历</p>
+<pre><code class="hljs">从根结点的第一层开始访问
+从上到下进行遍历，
+从左到右访问结点
+（利用队列来实现）
+</code></pre>
+<h2 id="树的遍历"><a href="#树的遍历" class="headerlink" title="树的遍历"></a>树的遍历</h2><p>先跟遍历：</p>
+<pre><code class="hljs">先访问根结点
+从左到右先跟遍历树的每个子树
+</code></pre>
+<p>后跟遍历：</p>
+<pre><code class="hljs">先依次后跟遍历每根子树，
+然后再访问根结点
+</code></pre>
+<h1 id="二叉平衡树、二叉排序树"><a href="#二叉平衡树、二叉排序树" class="headerlink" title="二叉平衡树、二叉排序树"></a>二叉平衡树、二叉排序树</h1><p>二叉排序树：<br>    是比根结点大的放在右子树，比根结点小的放在左子树</p>
+<p>二叉平衡树：<br>    在二叉排序树的基础上，只要保证每个节点左子树和右子树的高度差小于等于1就可以了。<br>    适用于插入删除比较少，但是查找比较多的情况</p>
+<h1 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h1><p><img src="https://img-blog.csdnimg.cn/2020050616004737.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDE3NzU5NA==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p>主要性质：</p>
+<pre><code class="hljs">节点是红色或者黑色，没有其他的颜色
+根结点是黑色，不能为红。
+每个叶节点是黑色，这里的叶子结 节点是指空的叶子结点
+不存在两个连续的红色节点，即父节点和子节点不能是连续的红色
+从任一节点到其每个叶节点的所有路径都包含相同数目的黑色节点。
+</code></pre>
+<p>优点：平均查找，添加输出效果都还不错</p>
+<p>红黑树的应用比较广泛，主要是用它来存储有序的数据，它的时间复杂度是O(lgn)，效率非常之高。例如，Java集合中的TreeSet和TreeMap，C++ STL中的set、map，需要使用动态规则的防火墙系统，使用红黑树而不是散列表被实践证明具有更好的伸缩性。Linux内核在管理vm_area_struct（虚拟内存）时就是采用了红黑树来维护内存块的。</p>
+<h1 id="图的相关概念"><a href="#图的相关概念" class="headerlink" title="图的相关概念"></a>图的相关概念</h1><p>图结构中结点之间的关系是任意的，图中的任意两个结点都可能有关系。</p>
+<p>图分为有向图和无向图</p>
+<p>有向图的基本算法：拓扑排序、最短路径（Dijkstra算法和Floyd算法）。</p>
+<p>无向图的基本算法：最小生成树（prime算法，Kruska算法）、DFS、BFS。</p>
+<h1 id="图的存储结构"><a href="#图的存储结构" class="headerlink" title="图的存储结构"></a>图的存储结构</h1><p>邻接表：（链式存储结构）由单链表的表头形成的<strong>顶点表</strong>，和单链表其余结点形成的<strong>边表</strong>两部分组成；一般顶点表存放顶点信息和指向第一个边结点的指针</p>
+<p>邻接矩阵：（顺序存储结构）</p>
+<p>有向图的十字链表法</p>
+<p>无向图的多重链表法</p>
+<h1 id="深度优先遍历与广度优先遍历"><a href="#深度优先遍历与广度优先遍历" class="headerlink" title="深度优先遍历与广度优先遍历"></a>深度优先遍历与广度优先遍历</h1><p>深度优先遍历 类似于二叉树的先序遍历</p>
+<p>步骤：</p>
+<pre><code class="hljs">（1）访问起始点v
+
+（2）若v的第一个邻接点没有被访问过，则深度遍历该邻接点；
+
+（3）若v的第一个邻接点已经被访问，则访问其第二个邻接点，进行深度遍历；重复以上步骤直到所有节点都被访问过为止
+</code></pre>
+<p>广度优先算法 类似于层次遍历</p>
+<p>步骤：</p>
+<pre><code class="hljs">（1）访问起始点v
+
+（2）依次遍历v的所有未访问过得邻接点
+
+（3）再依次访问下一层中未被访问过得邻接点；重复以上步骤，直到所有的顶点都被访问过为止
+</code></pre>
+<h1 id="最小生成树的算法（普利姆算法，克鲁斯卡尔算法）"><a href="#最小生成树的算法（普利姆算法，克鲁斯卡尔算法）" class="headerlink" title="最小生成树的算法（普利姆算法，克鲁斯卡尔算法）"></a>最小生成树的算法（普利姆算法，克鲁斯卡尔算法）</h1><h2 id="普利姆算法（Prim）"><a href="#普利姆算法（Prim）" class="headerlink" title="普利姆算法（Prim）"></a>普利姆算法（Prim）</h2><p>算法执行过程</p>
+<pre><code class="hljs">将v0到其他顶点的所有边当做候选边
+重复以下过程，直到所有的顶点被并入树中
+    1.从候选边中挑选出最小的边输出，并将于该边的另一端顶点并入树中
+    2.考查所有剩余的顶点，选取与这棵树相接的边最短的边
+</code></pre>
+<p>时间复杂度为O(n2)，适用于稠密图</p>
+<h2 id="克鲁斯卡尔算法"><a href="#克鲁斯卡尔算法" class="headerlink" title="克鲁斯卡尔算法"></a>克鲁斯卡尔算法</h2><p>思路：<br>    每次找出后候选边中权值最小的边，并入生成树中</p>
+<p>算法执行过程</p>
+<pre><code class="hljs">将图中边按照权值从小到大排序，
+然后从最小边开始扫描，
+并检测当前边是否为候选边，即是否该边并入会构成回路
+</code></pre>
+<p>适用于稀疏图</p>
+<h1 id="什么时候最小生成树唯一"><a href="#什么时候最小生成树唯一" class="headerlink" title="什么时候最小生成树唯一"></a>什么时候最小生成树唯一</h1><p>所有权值都不相同，或者有相同的边，但是在构造最小生成树的过程中权值相等的边都被并入到最小生成树中的图，其最小生成树是唯一的。</p>
+<h1 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h1><h2 id="Dijkstra算法（迪杰斯特拉）"><a href="#Dijkstra算法（迪杰斯特拉）" class="headerlink" title="Dijkstra算法（迪杰斯特拉）"></a>Dijkstra算法（迪杰斯特拉）</h2><p>迪杰斯特拉算法</p>
+<p>用于计算图中某一结点到其余顶点的最短路径</p>
+<p>思路：</p>
+<pre><code class="hljs">集合s存放图中一找到最短路径的顶点
+集合U存放途中剩余顶点
+</code></pre>
+<p>算法步骤：</p>
+<p>算法步骤：</p>
+<p>a.初始时，S只包含源点，即S＝{v}，v的距离为0。U包含除v外的其他顶点，即:U&#x3D;{其余顶点}，若v与U中顶点u有边，则&lt;u,v&gt;正常有权值，若u不是v的出边邻接点，则&lt;u,v&gt;权值为∞。</p>
+<p>b.从U中选取一个距离v最小的顶点k，把k，加入S中（该选定的距离就是v到k的最短路径长度）。</p>
+<p>c.以k为新考虑的中间点，修改U中各顶点的距离；若从源点v到顶点u的距离（经过顶点k）比原来距离（不经过顶点k）短，则修改顶点u的距离值，修改后的距离值的顶点k的距离加上边上的权。</p>
+<p>d.重复步骤b和c直到所有顶点都包含在S中。</p>
+<h2 id="floyd算法"><a href="#floyd算法" class="headerlink" title="floyd算法"></a>floyd算法</h2><p>解决任意两点间的最短路径的一种算法，</p>
+<p>可以正确处理有向图或负权的最短路径问题，同时也被用于计算有向图的传递闭包</p>
+<p>时间复杂度为O(N3)，空间复杂度为O(N2)。</p>
+<p><strong>算法描述</strong>：</p>
+<p>a.从任意一条单边路径开始。所有两点之间的距离是边的权，如果两点之间没有边相连，则权为无穷大。 　　</p>
+<p>b.对于每一对顶点 u 和 v，看看是否存在一个顶点 w 使得从 u 到 w 再到 v 比己知的路径更短。如果是更新它。</p>
+<h1 id="拓扑排序的概念以及实现"><a href="#拓扑排序的概念以及实现" class="headerlink" title="拓扑排序的概念以及实现"></a>拓扑排序的概念以及实现</h1><p>AOV网</p>
+<p>一种以顶点表示活动，以边表示<strong>活动的先后次序</strong>且<strong>没有回路</strong>的有向图</p>
+<p>反映出整个工程中各个活动之间的先后关系的有向图。</p>
+<p>拓扑算法的核心</p>
+<p>过程：</p>
+<pre><code class="hljs">从有向图中选择一个没有前驱（入读为0）的顶点输出
+删除1中的顶点，并且删除从该顶点发出的全部边
+一直重复
+</code></pre>
+<p>若图中没有环的时候，还可采用深度优先搜索遍历的方法进行拓扑排序</p>
+<h1 id="关键路径的相关概念"><a href="#关键路径的相关概念" class="headerlink" title="关键路径的相关概念"></a>关键路径的相关概念</h1><p>AOE网——对于活动在<strong>边</strong>上的我网</p>
+<p>AOV和AOE的区别</p>
+<p>相同点: 都是无环图</p>
+<p>不同点：AOV活动在顶点，边无权值，代表活动之前的先后关系，<br>                AOE活动在边，边有权值，代表活动持续的时间</p>
+<p>关键路径的核心算法：</p>
+<p><strong>最大路径长度的路径称为关键路径</strong></p>
+<p>关键活动：关键路径上的活动为关键路径，关键活动的最早开始时间等于最晚开始时间。由于AOE网中的某些活动是可以同时发生的，所以完成整个工程的时间应该是从始点到终点的最大路径长度，关键路径长度即为工程的最短完成时间。</p>
+<h1 id="各种排序的概括与总结"><a href="#各种排序的概括与总结" class="headerlink" title="各种排序的概括与总结"></a>各种排序的概括与总结</h1><p><img src="https://img-blog.csdnimg.cn/20200506173421805.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDE3NzU5NA==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200512134258944.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDE3NzU5NA==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p><strong>经过一趟排序，能保证一个关键字到达最终位置</strong><br>    冒泡排序、快速排序（交换类）<br>    简单选择、堆排序（选择类）</p>
+<p><strong>关键字比较次数和原始序列无关</strong><br>    简单选择、折半排序</p>
+<p><strong>排序趟数和原始序列无关</strong><br>    冒泡排序、快速排序（交换类）</p>
+<p><strong>将顺序存储更换为链式存储，时间效率低</strong><br>    希尔排序、堆排序</p>
+<p><strong>排序最优和最差相同的排序算法</strong><br>    简单选择、归并排序、堆排序</p>
+<p><strong>排序算法中那些最坏和平均的时间复杂度是一样的</strong><br>    直接插入、折半插入、冒泡排序、简单选择、堆排序、归并排序</p>
+<p><strong>稳定排序算法</strong><br>直接插入排序，冒泡排序和归并排序。</p>
+<h1 id="各种查找方法"><a href="#各种查找方法" class="headerlink" title="各种查找方法"></a>各种查找方法</h1><p>查找方法分为静态查找表和动态查找表</p>
+<p>静态查找表：顺序查找、折半查找、分块查找</p>
+<p>动态查找表：二叉排序树、平衡二叉树</p>
+<p>顺序查找：结构简单，顺序结构和链式结构都可以，查找效率低</p>
+<p>折半查找：要求查找表为顺序存储结构并且有序</p>
+<p>分块查找：先把查找表分为若干子表，要求每个子表的元素都要比他后面的子表的元素小，从而保存块间是有序的，把各子表中的最大关键词构成一张索引表，表中还包含各子表的起始地址。<br>特点：块间有序，块内无序，查找时块间进行索引查找，块内进行顺序查找。</p>
+<p>二叉排序树：</p>
+<p>平衡二叉树：他的左右子树高度差不能大于1，且左右子树也都是平衡二叉树。</p>
+<h1 id="快速排序的优化"><a href="#快速排序的优化" class="headerlink" title="快速排序的优化"></a>快速排序的优化</h1><p>优化：<br>1.当整个序列有序时退出算法；<br>2.当序列长度很小时（根据经验是大概小于 8），应该使用常数更小的算法，比如插入排序等；<br>3.随机选取分割位置；<br>4.当分割位置不理想时，考虑是否重新选取分割位置；<br>5.分割成两个序列时，只对其中一个递归进去，另一个序列仍可以在这一函数内继续划分，可以显著减小栈的大小（尾递归）：<br>6.将单向扫描改成双向扫描，可以减少划分过程中的交换次数</p>
+<p>优化1：当待排序序列的长度分割到一定大小后，使用插入排序<br>原因：对于很小和部分有序的数组，快排不如插排好。当待排序序列的长度分割到一定大小后，继续分割的效率比插入排序要差，此时可以使用插排而不是快排</p>
+<p>优化2：在一次分割结束后，可以把与Key相等的元素聚在一起，继续下次分割时，不用再对与key相等元素分割</p>
+<p>优化3：优化递归操作<br>快排函数在函数尾部有两次递归操作，我们可以对其使用尾递归优化</p>
+<p>优点：如果待排序的序列划分极端不平衡，递归的深度将趋近于n，而栈的大小是很有限的，每次递归调用都会耗费一定的栈空间，函数的参数越多，每次递归耗费的空间也越多。优化后，可以缩减堆栈深度，由原来的O(n)缩减为O(logn)，将会提高性能。</p>
+<h1 id="B树和B-树的区别，以一个m阶数为例"><a href="#B树和B-树的区别，以一个m阶数为例" class="headerlink" title="B树和B+树的区别，以一个m阶数为例"></a>B树和B+树的区别，以一个m阶数为例</h1><p>&#x3D;&#x3D;关键词的数量不同&#x3D;&#x3D;：<br>B+树中具有n个关键字的结点只含有n棵子树。每个结点关键字个数的范围是|m&#x2F;2| &lt;&#x3D; n &lt;&#x3D; m<br>B树中具有n个关键字的结点含有n+1棵子树。每个结点关键字个数的范围是|m&#x2F;2| -1&lt;&#x3D; n &lt;&#x3D; m-1</p>
+<p>&#x3D;&#x3D;存储的位置不同&#x3D;&#x3D;：B+树中数据都存储在叶子结点上，也就是其所有叶子结点的数据组合起来就是完整的数据，但是B树的数据存储在每一个结点中。</p>
+<p>&#x3D;&#x3D;分支结点的结构不同&#x3D;&#x3D;：B+树的分支结点仅仅存储着关键字信息和儿子的指针，也就是说内部结点仅仅包含着索引信息</p>
+<p>&#x3D;&#x3D;查询不同&#x3D;&#x3D;：B树在找到具体的数值以后，则结束，而B+树则需要通过索引找到叶子结点中的数据才结束。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200507151335238.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/2020050715134813.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDE3NzU5NA==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h1 id="哈希表（概念、构造方法、冲突解决）"><a href="#哈希表（概念、构造方法、冲突解决）" class="headerlink" title="哈希表（概念、构造方法、冲突解决）"></a>哈希表（概念、构造方法、冲突解决）</h1><p><strong>概念</strong>：根据给定的关键字来计算出关键字的表内地址</p>
+<h2 id="建立方法"><a href="#建立方法" class="headerlink" title="建立方法"></a>建立方法</h2><p>直接定址法：<br>    H(Key)&#x3D;a*Key+b<br>    特点：计算简单，且不会产生冲突，若关键字分布不连续，空位较多，则会造成存储空间的浪费。</p>
+<p>数字分析法：<br>    适用于关键字位数比较多且标红可能的关键字都是已知的情况</p>
+<p>平方取中法：	<br>    取关键字平方后的中间几位作为Hash地址<br>    适用于关键字的每位取值都不够均匀或均小于散列地址所需的位数</p>
+<p>除留余数法：</p>
+<h2 id="冲突解决方法"><a href="#冲突解决方法" class="headerlink" title="冲突解决方法"></a>冲突解决方法</h2><p><strong>1.开放定址法</strong><br>    线性探查法：依次探查下一个地址，直到有空位置出现为止（容易产生堆积）<br>    平方探查法：可以减少堆积问题，但是不能探查到hash上的所有单元，可探查到一半单元。</p>
+<p><strong>2.链地址法</strong><br>    把所有的同义词用单链表连接起来</p>
+<p><strong>3.公共溢出区</strong></p>
+<h1 id="用循环比递归的效率高吗？"><a href="#用循环比递归的效率高吗？" class="headerlink" title="用循环比递归的效率高吗？"></a>用循环比递归的效率高吗？</h1><p>递归和循环两者完全可以互换。不能完全决定性地说循环地效率比递归的效率高。</p>
+<p><strong>递归算法</strong></p>
+<p>优点：代码简洁、清晰，并且容易验证正确性。</p>
+<p>缺点：它的运行需要较多次数的函数调用，如果调用<strong>层数</strong>比较深，需要增加额外的堆栈处理（还有可能出现堆栈溢出的情况），比如参数传递需要<strong>压栈</strong>等操作，会对执行效率有一定影响。<br>但是，对于某些问题，如果不使用递归，那将是极端<strong>难看</strong>的代码。在编译器优化后，对于多次调用的函数处理会有非常好的效率优化，效率未必低于循环。</p>
+<p><strong>循环算法</strong></p>
+<p>优点：速度快，结构简单。</p>
+<p>缺点：并不能解决所有的问题。有的问题适合使用递归而不是循环。如果使用循环并不困难的话，最好使用循环。</p>
+<h1 id="贪心算法和动态规划区别？"><a href="#贪心算法和动态规划区别？" class="headerlink" title="贪心算法和动态规划区别？"></a>贪心算法和动态规划区别？</h1><p>贪心算法顾名思义就是做出在当前看来是最好的结果，它不从整体上加以考虑，也就是<strong>局部最优解</strong>。贪心算法<strong>从上往下</strong>，从顶部一步一步最优，的到最后的结果，它不能保证全局最优解，与贪心策略的选择有关。</p>
+<p>   动态规划是把问题分解成子问题，这些子问题可能有重复，可以记录下前面子问题的结果防止重复计算。动态规划解决子问题，前一个子问题的解对后一个子问题产生一定的影响。在求解子问题的过程中保留哪些有可能得到最优的局部解，丢弃其他局部解，直到解决最后一个问题时也就是初始问题的解。动态规划是<strong>从下到上</strong>，一步一步找到<strong>全局最优解</strong>。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="category-chain-item">基础知识</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>
+      
+        <a href="/tags/%E9%9D%A2%E8%AF%95%E3%80%81%E5%A4%8D%E8%AF%95/">#面试、复试</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>数据结构知识系统梳理</div>
+      <div>http://example.com/2022/08/26/04.数据结构知识梳理/</div>
+    </div>
+    <div class="license-meta">
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>August 26, 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/08/26/04.%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/" title="数学知识梳理">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数学知识梳理</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/08/26/01.%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0--%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/" title="【论文阅读】用于自动驾驶的高清地图生成技术">
+                        <span class="hidden-mobile">【论文阅读】用于自动驾驶的高清地图生成技术</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        Views: 
+        <span id="busuanzi_value_site_pv"></span>
+        
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        Visitors: 
+        <span id="busuanzi_value_site_uv"></span>
+        
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.1/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

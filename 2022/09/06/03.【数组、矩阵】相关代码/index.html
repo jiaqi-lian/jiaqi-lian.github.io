@@ -1,0 +1,946 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/t_1.png">
+  <link rel="icon" href="/img/t_1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Jiaqi Lian">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="简单两数之和描述 给出一个整型数组 numbers 和一个目标值 target，请在数组中找出两个加起来等于目标值的数的下标，返回的下标按升序排列。 （注：返回的数组下标从1开始算起，保证target一定可以由数组里面2个数字相加得到）  解题思路：  两个for循环（缺点：超时） 哈希表&lt;取值， 下标&gt;  123456789101112131415161718192021222324">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【数组、矩阵】相关代码">
+<meta property="og:url" content="http://example.com/2022/09/06/03.%E3%80%90%E6%95%B0%E7%BB%84%E3%80%81%E7%9F%A9%E9%98%B5%E3%80%91%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81/index.html">
+<meta property="og:site_name" content="QBlog">
+<meta property="og:description" content="简单两数之和描述 给出一个整型数组 numbers 和一个目标值 target，请在数组中找出两个加起来等于目标值的数的下标，返回的下标按升序排列。 （注：返回的数组下标从1开始算起，保证target一定可以由数组里面2个数字相加得到）  解题思路：  两个for循环（缺点：超时） 哈希表&lt;取值， 下标&gt;  123456789101112131415161718192021222324">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/f8e2caa2df8a433281ffa4360edf058a.gif">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/c7f5ffacdaea469fad2ef532987e59c1.png">
+<meta property="article:published_time" content="2022-09-06T02:44:20.000Z">
+<meta property="article:modified_time" content="2022-09-06T03:07:05.889Z">
+<meta property="article:author" content="Jiaqi Lian">
+<meta property="article:tag" content="代码">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="矩阵">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/f8e2caa2df8a433281ffa4360edf058a.gif">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>【数组、矩阵】相关代码 - QBlog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":50,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Qi Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                pick me~
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/3.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【数组、矩阵】相关代码"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-06 10:44" pubdate>
+          September 6, 2022 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.8k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          40 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="刷题"
+        id="heading-fdacafc46605602f778fa704d63aa71b" role="tab" data-toggle="collapse" href="#collapse-fdacafc46605602f778fa704d63aa71b"
+        aria-expanded="true"
+      >
+        刷题
+        <span class="list-group-count">(14)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-fdacafc46605602f778fa704d63aa71b"
+           role="tabpanel" aria-labelledby="heading-fdacafc46605602f778fa704d63aa71b">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/09/06/03.vs%E5%9F%BA%E7%A1%80%E6%A8%A1%E6%9D%BFc++/" title="vs基础模板、c++模板"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vs基础模板、c++模板</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/06/03-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%90%E5%9B%BE%E3%80%91%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81/" title="【图】相关代码"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【图】相关代码</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/06/03-%E3%80%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E3%80%91%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81/" title="【字符串】相关代码"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【字符串】相关代码</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/06/03.%E5%9F%BA%E4%BA%8E%E3%80%90%E6%8E%92%E5%BA%8F%E3%80%91%E8%BF%9B%E4%B8%80%E6%AD%A5%E4%BB%A3%E7%A0%81/" title="【排序】相关代码"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【排序】相关代码</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/06/03.%E3%80%90%E6%95%B0%E7%BB%84%E3%80%81%E7%9F%A9%E9%98%B5%E3%80%91%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81/" title="【数组、矩阵】相关代码"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">【数组、矩阵】相关代码</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/06/03.%E3%80%90%E6%A0%88%E3%80%81%E9%98%9F%E5%88%97%E3%80%91%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81/" title="【栈、队列】相关代码"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【栈、队列】相关代码</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/06/03.%E3%80%90%E6%A0%91%E3%80%91%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81/" title="【树】相关基础代码"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【树】相关基础代码</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/06/03-%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E5%BE%97%E5%88%86%E6%9C%80%E5%A4%A7/" title="【编程题】得分最大"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【编程题】得分最大</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/06/03-%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E7%BB%99%E5%87%BA%E4%B8%A4%E4%B8%AA%E6%95%B4%E6%95%B0n%E5%92%8Ck%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%BB%8E1%E5%88%B0n%E4%B8%AD%E5%8F%96k%E4%B8%AA%E6%95%B0%E5%AD%97%E7%9A%84%E6%89%80%E6%9C%89%E5%8F%AF%E8%83%BD%E7%9A%84%E7%BB%84%E5%90%88/" title="【编程题】给出两个整数n和k，返回从1到n中取k个数字的所有可能的组合"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【编程题】给出两个整数n和k，返回从1到n中取k个数字的所有可能的组合</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/06/03.%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="动态规划相关代码"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">动态规划相关代码</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/06/03.%E5%9F%BA%E7%A1%80%E7%AE%80%E5%8D%95%E7%AE%97%E6%B3%95/" title="基础简单算法"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">基础简单算法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/06/03-%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%8D%95%E8%AF%8D%E9%95%BF%E5%BA%A6/" title="字符串最后一个单词长度"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">字符串最后一个单词长度</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/06/03.%E6%8E%92%E5%BA%8F%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81/" title="排序相关代码"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">排序相关代码</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/06/03.%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81/" title="链表相关代码"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">链表相关代码</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">【数组、矩阵】相关代码</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="简单"><a href="#简单" class="headerlink" title="简单"></a>简单</h2><h3 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h3><p><strong>描述</strong></p>
+<pre><code class="hljs">给出一个整型数组 numbers 和一个目标值 target，请在数组中找出两个加起来等于目标值的数的下标，返回的下标按升序排列。
+（注：返回的数组下标从1开始算起，保证target一定可以由数组里面2个数字相加得到）
+</code></pre>
+<p><strong>解题思路：</strong></p>
+<ul>
+<li>两个for循环（缺点：超时）</li>
+<li>哈希表&lt;取值， 下标&gt;</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * </span><br><span class="hljs-comment">     * @param numbers int整型vector </span><br><span class="hljs-comment">     * @param target int整型 </span><br><span class="hljs-comment">     * @return int整型vector</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">twoSum</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; numbers, <span class="hljs-type">int</span> target)</span> </span>&#123;<br>        <span class="hljs-comment">// write code here</span><br>        vector&lt;<span class="hljs-type">int</span>&gt; res;<br>        <span class="hljs-type">int</span> n = numbers.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">if</span>(n==<span class="hljs-number">0</span>)<br>            <span class="hljs-keyword">return</span> res;<br>        <br>        unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; haxi;<span class="hljs-comment">//定义哈希表，&lt;取值，下标&gt;</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)&#123;<br>            <span class="hljs-keyword">if</span>(haxi.<span class="hljs-built_in">count</span>(target-numbers[i]))&#123; <span class="hljs-comment">//找到执行，没找到不执行</span><br>                res.<span class="hljs-built_in">push_back</span>(haxi[target-numbers[i]]+<span class="hljs-number">1</span>);<br>                res.<span class="hljs-built_in">push_back</span>(i+<span class="hljs-number">1</span>);<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                <span class="hljs-comment">//将未找到的值插入哈希表中</span><br>                haxi[numbers[i]] = i;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>    <br><span class="hljs-comment">//        for(int i=0; i&lt;numbers.size()-1; i++)&#123;</span><br><span class="hljs-comment">//            for(int j=i+1; j&lt;numbers.size(); j++)&#123;</span><br><span class="hljs-comment">//                if(numbers[i] + numbers[j] == target)&#123;</span><br><span class="hljs-comment">//                    res.push_back(i+1);</span><br><span class="hljs-comment">//                    res.push_back(j+1);</span><br><span class="hljs-comment">//                    return res;</span><br><span class="hljs-comment">//                &#125;     </span><br><span class="hljs-comment">//            &#125;</span><br><span class="hljs-comment">//        &#125;</span><br><span class="hljs-comment">//        return res;</span><br><span class="hljs-comment">//    &#125;</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h3 id="合并两个有序的数组"><a href="#合并两个有序的数组" class="headerlink" title="合并两个有序的数组"></a>合并两个有序的数组</h3><p><strong>描述</strong></p>
+<pre><code class="hljs">给出一个有序的整数数组 A 和有序的整数数组 B ，请将数组 B 合并到数组 A 中，变成一个有序的升序数组
+</code></pre>
+<p><strong>注意</strong></p>
+<pre><code class="hljs">1.保证 A 数组有足够的空间存放 B 数组的元素， A 和 B 中初始的元素数目分别为 m 和 n，A的数组空间大小为 m+n
+2.不要返回合并的数组，将数组 B 的数据合并到 A 里面就好了，且后台会自动将合并后的数组 A 的内容打印出来，所以也不需要自己打印
+3. A 数组在[0,m-1]的范围也是有序的
+</code></pre>
+<p><strong>思路：</strong></p>
+<ul>
+<li>step 1：使用三个指针，i指向数组A的最大元素，j指向数组B的最大元素，k指向数组A空间的结尾处。</li>
+<li>step 2：从两个数组最大的元素开始遍历，直到某一个结束，每次取出较大的一个值放入数组A空间的最后，然后指针一次往前。</li>
+<li>step 3：如果数组B先遍历结束，数组A前半部分已经存在了，不用管；但是如果数组A先遍历结束，则需要把数组B剩余的前半部分依次逆序加入数组A前半部分，类似归并排序最后的步骤。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(<span class="hljs-type">int</span> A[], <span class="hljs-type">int</span> m, <span class="hljs-type">int</span> B[], <span class="hljs-type">int</span> n)</span> </span>&#123;<br>        <span class="hljs-type">int</span> i = m<span class="hljs-number">-1</span>, j = n<span class="hljs-number">-1</span>, k = m+n<span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">while</span>(i&gt;=<span class="hljs-number">0</span> &amp;&amp; j&gt;=<span class="hljs-number">0</span>)&#123;<br>            <span class="hljs-keyword">if</span>(A[i] &gt; B[j])<br>                A[k--] = A[i--];<br>            <span class="hljs-keyword">else</span><br>                A[k--] = B[j--];<br>        &#125;<br>        <span class="hljs-keyword">if</span>(i &lt; <span class="hljs-number">0</span>)&#123;<br>            <span class="hljs-keyword">while</span>(j&gt;=<span class="hljs-number">0</span>)<br>                A[k--] = B[j--];<br>        &#125;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h3 id="螺旋矩阵"><a href="#螺旋矩阵" class="headerlink" title="螺旋矩阵"></a>螺旋矩阵</h3><p><strong>描述</strong></p>
+<pre><code class="hljs">给定一个m x n大小的矩阵（m行，n列），按螺旋的顺序返回矩阵中的所有元素。
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/f8e2caa2df8a433281ffa4360edf058a.gif" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><br><strong>解题：</strong></p>
+<ul>
+<li>四个边界—上边界、下边界、左边界、右边界</li>
+<li>直到边界重合</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">spiralOrder</span><span class="hljs-params">(vector&lt;vector&lt;<span class="hljs-type">int</span>&gt; &gt; &amp;matrix)</span> </span>&#123;<br>        vector&lt;<span class="hljs-type">int</span>&gt; res;<br>        <span class="hljs-type">int</span> n = matrix.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">if</span>(n == <span class="hljs-number">0</span>)<br>            <span class="hljs-keyword">return</span> res;<br>        <span class="hljs-comment">//左边界、右边界、上边界、下边界</span><br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> right = matrix[<span class="hljs-number">0</span>].<span class="hljs-built_in">size</span>() <span class="hljs-number">-1</span>;<br>        <span class="hljs-type">int</span> top = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> down = n<span class="hljs-number">-1</span>;<br>        <br>        <span class="hljs-comment">//直到边界重合</span><br>        <span class="hljs-keyword">while</span>(left &lt;= right &amp;&amp; top &lt;= down)&#123;<br>            <span class="hljs-comment">//上边界从左到右</span><br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=left; i&lt;=right; i++)<br>                res.<span class="hljs-built_in">push_back</span>(matrix[top][i]);<br>            top++;<br>            <span class="hljs-keyword">if</span>(top&gt;down)<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-comment">//右边界从上到下</span><br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=top; i&lt;= down; i++)<br>                res.<span class="hljs-built_in">push_back</span>(matrix[i][right]);<br>            right--;<br>            <span class="hljs-keyword">if</span>(left&gt;right)<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-comment">//下边界从右到左</span><br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=right; i&gt;=left; i--)<br>                res.<span class="hljs-built_in">push_back</span>(matrix[down][i]);<br>            down--;<br>            <span class="hljs-keyword">if</span>(top&gt;down)<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-comment">//左边界从下到上</span><br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=down; i&gt;=top; i--)<br>                res.<span class="hljs-built_in">push_back</span>(matrix[i][left]);<br>            left++;<br>            <span class="hljs-keyword">if</span>(left&gt;right)<br>                <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res; <br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h3 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h3><p><img src="https://img-blog.csdnimg.cn/c7f5ffacdaea469fad2ef532987e59c1.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><br><strong>递归</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">Fibonacci</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span>(n == <span class="hljs-number">1</span> || n== <span class="hljs-number">2</span>)<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">Fibonacci</span>(n<span class="hljs-number">-1</span>) + <span class="hljs-built_in">Fibonacci</span>(n<span class="hljs-number">-2</span>);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="中等"><a href="#中等" class="headerlink" title="中等"></a>中等</h2><h3 id="最长无重复子数组"><a href="#最长无重复子数组" class="headerlink" title="最长无重复子数组"></a>最长无重复子数组</h3><p><strong>描述</strong></p>
+<pre><code class="hljs">给定一个长度为n的数组arr，返回arr的最长无重复元素子数组的长度，无重复指的是所有数字都不相同。
+子数组是连续的，比如[1,3,5,7,9]的子数组有[1,3]，[3,5,7]等等，但是[1,3,7]不是子数组
+</code></pre>
+<p><strong>解题思路</strong></p>
+<ul>
+<li>step 1：构建一个哈希表，用于统计数组元素出现的次数。</li>
+<li>step 2：窗口左右界都从数组首部开始，每次窗口优先右移右界，并统计进入窗口的元素的出现频率。</li>
+<li>step 3：一旦右界元素出现频率大于1，就需要右移左界直到窗口内不再重复，将左边的元素移除窗口的时候同时需要将它在哈希表中的频率减1，保证哈希表中的频率都是窗口内的频率。</li>
+<li>step 4：每轮循环，维护窗口长度最大值。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * </span><br><span class="hljs-comment">     * @param arr int整型vector the array</span><br><span class="hljs-comment">     * @return int整型</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxLength</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; arr)</span> </span>&#123;<br>        <span class="hljs-comment">// write code here</span><br>        unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; mp;<br>        <span class="hljs-type">int</span> res = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> j = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;arr.<span class="hljs-built_in">size</span>(); i++)&#123;<br>            <br>            <span class="hljs-comment">//右移进入哈希表统计出现次数</span><br>            mp[arr[i]]++;<br>            <span class="hljs-comment">//出现次数大于1，有重复</span><br>            <span class="hljs-keyword">while</span>(mp[arr[i]] &gt; <span class="hljs-number">1</span>)<br>                mp[arr[j++]]--;<br>            res = <span class="hljs-built_in">max</span>(res, i-j+<span class="hljs-number">1</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h3 id="三数之和"><a href="#三数之和" class="headerlink" title="三数之和"></a>三数之和</h3><p><strong>描述</strong></p>
+<pre><code class="hljs">给出一个有n个元素的数组S，S中是否有元素a,b,c满足a+b+c=0？找出数组S中所有满足条件的三元组。
+
+数据范围：0≤n≤3000，数组中各个元素值满足 ∣val∣≤100
+空间复杂度：O(n^2），时间复杂度 O(n^2)
+</code></pre>
+<p><strong>注意：</strong></p>
+<pre><code class="hljs">三元组（a、b、c）中的元素可以按任意顺序排列。
+解集中不能包含重复的三元组。
+输入：[-10,0,10,20,-10,-40]
+返回值：[[-10,-10,20],[-10,0,10]]
+</code></pre>
+<p><strong>思路：</strong></p>
+<ul>
+<li>如果找到了某个数a，要找到与之对应的另外两个数，三数之和为0，等价于只要找到另外两个数之和为−a</li>
+</ul>
+<p><strong>具体做法：</strong></p>
+<ul>
+<li>step 1：排除<strong>边界</strong>特殊情况。</li>
+<li>step 2：既然三元组内部要求非降序排列，那我们先得把这个无序的数组搞有序了，使用<strong>sort函数</strong>优先对其排序。</li>
+<li>step 3：得到有序数组后，<strong>遍历该数组</strong>，对于每个遍历到的元素假设它是三元组中最小的一个，那么另外两个一定在后面。</li>
+<li>step 4：需要三个数相加为0，则另外两个数相加应该为上述第一个数的相反数，我们可以利用<strong>双指针</strong>在剩余的子数组中找有没有这样的数对。双指针指向剩余子数组的首尾，如果二者相加为目标值，那么可以记录，而且二者中间的数字相加可能还会有。</li>
+<li>step 5：如果二者相加大于目标值，说明右指针太大了，那就将其左移缩小，相反如果二者相加小于目标值，说明左指针太小了，将其右移扩大，直到两指针相遇，剩余子数组找完了。<br>注：对于三个数字都要判断是否相邻有重复的情况，要去重。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br><br>    <span class="hljs-function"><span class="hljs-type">static</span> <span class="hljs-type">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span></span>&#123;<br>        <span class="hljs-keyword">return</span> x&lt;y;<br>    &#125;<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt; &gt; <span class="hljs-built_in">threeSum</span>(vector&lt;<span class="hljs-type">int</span>&gt; &amp;num) &#123;<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; res;<br>        <span class="hljs-type">int</span> n = num.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">if</span>(n &lt; <span class="hljs-number">3</span>)<br>            <span class="hljs-keyword">return</span> res;<br>        <span class="hljs-comment">//对num排序</span><br>        <span class="hljs-built_in">sort</span>(num.<span class="hljs-built_in">begin</span>(), num.<span class="hljs-built_in">end</span>(),cmp);<br>        <br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;n<span class="hljs-number">-2</span>; i++)&#123;<br>            <span class="hljs-keyword">if</span>(i != <span class="hljs-number">0</span> &amp;&amp; num[i] == num[i<span class="hljs-number">-1</span>])<br>                <span class="hljs-keyword">continue</span>;<br>            <span class="hljs-type">int</span> left = i+<span class="hljs-number">1</span>;<br>            <span class="hljs-type">int</span> right = n<span class="hljs-number">-1</span>;<br>            <span class="hljs-type">int</span> target = -num[i]; <span class="hljs-comment">//两数相加为-num[i]</span><br>            <span class="hljs-keyword">while</span>(left &lt; right)&#123;<br>                <span class="hljs-keyword">if</span>(num[left] + num[right] == target)&#123;<br>                    res.<span class="hljs-built_in">push_back</span>(&#123;num[i], num[left], num[right]&#125;);<br>                    <span class="hljs-comment">//去重复</span><br>                    <span class="hljs-keyword">while</span>(left+<span class="hljs-number">1</span> &lt; right &amp;&amp; num[left] == num[left+<span class="hljs-number">1</span>])<br>                        left++;<br>                    <span class="hljs-keyword">while</span>(right<span class="hljs-number">-1</span> &gt; left &amp;&amp; num[right] == num[right<span class="hljs-number">-1</span>])<br>                        right--;<br>                    left++;<br>                    right--;<br>                &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(num[left] + num[right] &gt; target)<br>                    right--;<br>                <span class="hljs-keyword">else</span><br>                    left++;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>        <br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-chain-item">刷题</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E4%BB%A3%E7%A0%81/">#代码</a>
+      
+        <a href="/tags/%E6%95%B0%E7%BB%84/">#数组</a>
+      
+        <a href="/tags/%E7%9F%A9%E9%98%B5/">#矩阵</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【数组、矩阵】相关代码</div>
+      <div>http://example.com/2022/09/06/03.【数组、矩阵】相关代码/</div>
+    </div>
+    <div class="license-meta">
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>September 6, 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/09/06/03-%E3%80%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E3%80%91%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81/" title="【字符串】相关代码">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【字符串】相关代码</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/09/06/03.%E5%9F%BA%E4%BA%8E%E3%80%90%E6%8E%92%E5%BA%8F%E3%80%91%E8%BF%9B%E4%B8%80%E6%AD%A5%E4%BB%A3%E7%A0%81/" title="【排序】相关代码">
+                        <span class="hidden-mobile">【排序】相关代码</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        Views: 
+        <span id="busuanzi_value_site_pv"></span>
+        
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        Visitors: 
+        <span id="busuanzi_value_site_uv"></span>
+        
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.1/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
